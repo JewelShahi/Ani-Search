@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaDiscord, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { SiMyanimelist } from "react-icons/si";
 
 const Footer = () => {
@@ -27,16 +27,6 @@ const Footer = () => {
           >
             <FaEnvelope className="footer-icon email" />
           </a>
-          <a
-            className="footer-links"
-            href="https://discord.gg/zWrJsAg3HX"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Discord"
-          >
-            <FaDiscord className="footer-icon discord" />
-          </a>
-
           <a
             className="footer-links"
             href="https://github.com/JewelShahi"

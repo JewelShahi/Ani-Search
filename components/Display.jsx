@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa";
 
 const Display = ({ animeData }) => {
   console.log(animeData);
@@ -80,7 +81,9 @@ const Display = ({ animeData }) => {
               </h3>
               <h3 className="h3">
                 English:{" "}
-                <span className="ani-info-content-span">{anime.title}</span>
+                <span className="ani-info-content-span">
+                  {anime.title_english ?? anime.title ?? "Unknown"}
+                </span>
               </h3>
               {anime.title_synonyms && anime.title_synonyms.length > 0 && (
                 <h3 className="h3">
@@ -94,6 +97,12 @@ const Display = ({ animeData }) => {
                 Type:{" "}
                 <span className="ani-info-content-span">
                   {anime.type || "Unknown"}
+                </span>
+              </h3>
+              <h3 className="h3">
+                Status:{" "}
+                <span className="ani-info-content-span">
+                  {anime.status || "Unknown"}
                 </span>
               </h3>
               <h3 className="h3">
@@ -115,15 +124,28 @@ const Display = ({ animeData }) => {
                 </span>
               </h3>
               <h3 className="h3">
+                Season:{" "}
+                <span className="ani-info-content-span">
+                  {anime.season
+                    ? anime.season.charAt(0).toUpperCase() +
+                      anime.season.slice(1)
+                    : "Unknown"}
+                </span>
+              </h3>
+              <h3 className="h3">
                 Rating:{" "}
                 <span className="ani-info-content-span">
-                  {anime.rating.split(" ")[0] || "Unknown"}
+                  {anime.rating ? anime.rating.split(" ")[0] : "Unknown"}
                 </span>
               </h3>
               <h3 className="h3">
                 Episodes:{" "}
                 <span className="ani-info-content-span">
-                  {anime.episodes || "Unknown"}
+                  {anime.episodes
+                    ? anime.episodes <= 1
+                      ? anime.episodes + " episode"
+                      : anime.episodes + " episodes"
+                    : "Unknown"}
                 </span>
               </h3>
               <h3 className="h3">
@@ -142,6 +164,20 @@ const Display = ({ animeData }) => {
                   )}
                 </div>
               </div>
+              <h3 className="h3">
+                Studio:{" "}
+                <span className="ani-info-content-span">
+                  {anime.studios && anime.studios.length > 0
+                    ? " " + anime.studios[0].name
+                    : "Unknown"}
+                </span>
+              </h3>
+              <h3 className="h3">
+                Source:{" "}
+                <span className="ani-info-content-span">
+                  {anime.source ?? "Unknown"}
+                </span>
+              </h3>
               <h3 className="h3">
                 Popularity:{" "}
                 <span className="ani-info-content-span">
@@ -163,29 +199,13 @@ const Display = ({ animeData }) => {
               <h3 className="h3">
                 MAL Score:{" "}
                 <span className="ani-info-content-span">
-                  {anime.score || "Unknown"}
-                </span>
-              </h3>
-              <h3 className="h3">
-                Season:{" "}
-                <span className="ani-info-content-span">
-                  {anime.season
-                    ? anime.season.charAt(0).toUpperCase() +
-                      anime.season.slice(1)
-                    : "Unknown"}
-                </span>
-              </h3>
-              <h3 className="h3">
-                Status:{" "}
-                <span className="ani-info-content-span">
-                  {anime.status || "Unknown"}
-                </span>
-              </h3>
-              <h3 className="h3">
-                Studio:{" "}
-                <span className="ani-info-content-span">
-                  {anime.studios && anime.studios.length > 0
-                    ? " " + anime.studios[0].name
+                  {anime.score
+                    ? anime.scored_by
+                      ? anime.score +
+                        ", scored by " +
+                        anime.scored_by +
+                        " people"
+                      : anime.score
                     : "Unknown"}
                 </span>
               </h3>
@@ -194,6 +214,13 @@ const Display = ({ animeData }) => {
                   <h3 className="h3">Description: </h3>
                   <p className="description-text p">{anime.synopsis}</p>
                 </div>
+              )}
+              {anime.url && (
+                <h3 className="h3">
+                  <a href={anime.url} className="link-to-mal" target="_blank">
+                    MAL <FaArrowRight className="right-arrow-mal" />
+                  </a>
+                </h3>
               )}
             </div>
           </div>

@@ -657,7 +657,7 @@ p {
   right: 10px;
   height: 30px;
   width: 20px;
-  background-color: rgba(22, 134, 220, 0.5);
+  background-color: rgba(4, 164, 65, 0.4);
   color: white;
   display: flex;
   justify-content: center;
@@ -665,15 +665,40 @@ p {
   border-radius: 15px;
   padding: 10px 15px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: opacity 0.3s ease;
   opacity: 0; /* Initially hidden */
 }
 
-.scroll-top-btn:hover{
-  background-color: rgba(22, 134, 220, 0.8);
-  box-shadow: 0 0 10px rgb(95, 169, 237);
+/*Link to MAL*/
+.link-to-mal{
+  text-decoration: none;
+  margin-top: 15px;
+  color: rgb(50, 160, 38);
+  font-size: 14px;
   transition: 0.5s;
+}
+
+.right-arrow-mal{
+  transition: 0.3s;
+} 
+
+.link-to-mal:hover, .link-to-mal:hover .right-arrow-mal{
+  color:rgb(69, 185, 94)
+}
+
+.link-to-mal:hover .right-arrow-mal{
+  padding-left: 10px;
+}
+
+.scroll-top-btn:hover{
+  background-color: rgba(4, 164, 65, 0.8);
+  box-shadow: 0 0 10px rgb(78, 230, 210);
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+
+.scroll-top-btn:active{
+  transform: scale(0.8);
 }
 
 .scroll-top-btn > *{
