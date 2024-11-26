@@ -11,6 +11,18 @@
   --border-shadow-anime-view: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
+/* Change the background color and text color of selected text */
+::selection {
+  background-color: #19601a;
+  color: white;
+}
+
+/* For browsers that use the ::-moz-selection pseudo-element (Firefox) */
+::-moz-selection {
+  background-color: #19601a;
+  color: white;
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }
@@ -76,14 +88,26 @@ body {
   transition: 300ms;
 }
 
+.page-btn:hover {
+  background-color: #0f7f00 !important;
+  color: white !important;
+  box-shadow: 0 0 20px #5d5d5d;
+}
+
 .page-navigation {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  background: white;
-  color: black;
+  background: rgb(19, 18, 18) !important;
+  color: rgb(248, 248, 248) !important;
+  border: 1px solid white;
   transition: 300ms;
+}
+
+.page-navigation:hover {
+  background: rgb(49, 49, 49) !important;
+  box-shadow: 0 0 20px #7b7b7b;
 }
 
 .page-navigation-arrows:hover {
@@ -122,17 +146,20 @@ body {
   font-family: var(--logo-font);
   font-weight: 200;
   padding: 0px 3px 0px 3px;
-  transition: 300ms;
+  transition: 0.5s;
   cursor: pointer;
 }
 
 .nav-buttons > button:hover {
-  background: #bababa;
+  background: #1f6015;
+  border: 1px solid white;
+  color: white;
+  box-shadow: 0 0 20px rgba(79, 79, 79, 0.9);
 }
 
 .nav-buttons > button:active {
-  background: #949494;
-  scale: 0.90;
+  background: #063a01;
+  scale: 0.9;
 }
 
 .logo {
@@ -181,7 +208,8 @@ body {
   transition: 300ms;
 }
 
-.nav-search > input:focus {
+.nav-search > input:focus,
+.nav-search > input:focus ~ button {
   box-shadow: 0px 0px 20px #a3a3a3;
 }
 
@@ -203,8 +231,12 @@ body {
   color: white;
 }
 
-.nav-search > button:hover{
-  background: #025507;
+.nav-search > button:hover {
+  background: #08720f;
+}
+
+.nav-search > button:active {
+  background: #025408;
 }
 
 .body-section {
@@ -225,6 +257,11 @@ body {
   border-radius: var(--border-radius-div);
   border: 3px solid rgba(114, 214, 232, 0.2);
   box-shadow: var(--border-shadow-anime-view);
+  transition: 300ms;
+}
+
+.anime-image:hover {
+  box-shadow: 0 0 40px rgb(0, 0, 0);
 }
 
 .anime-item {
@@ -306,6 +343,11 @@ body {
   border-radius: var(--border-radius-div);
   border: 3px solid rgb(186, 186, 186, 0.5);
   box-shadow: var(--border-shadow-anime-view);
+  transition: 300ms;
+}
+
+.video:hover {
+  box-shadow: 0 0 30px black;
 }
 
 .no-data {
@@ -452,12 +494,13 @@ p {
   overflow: auto;
   overflow-x: hidden;
   border-radius: var(--description-text-round);
+  line-height: 18px;
 }
 
 .footer {
   height: auto;
   width: 100%;
-  background-color: #333; 
+  background-color: #333;
   padding: 10px 0;
   text-align: center;
 }
@@ -494,7 +537,7 @@ p {
 }
 
 .discord:hover {
-  color: #5865F2;
+  color: #5865f2;
 }
 
 .replit:hover {
@@ -507,6 +550,89 @@ p {
 
 .mal:hover {
   color: #2e51a2;
+}
+
+/*Scrolling behaivour*/
+/* Global styling for the scroll-to-top button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  height: 30px;
+  width: 20px;
+  background: linear-gradient(30deg, rgba(38, 255, 0, 0.4), rgba(0, 255, 195, 0.4));
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  padding: 10px 15px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.5s ease,
+    box-shadow 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-top-btn:hover {
+  background: linear-gradient(30deg, rgba(38, 255, 0, 0.8), rgba(0, 255, 195, 0.8));
+  box-shadow: 0 0 10px rgb(78, 230, 210);
+  transform: scale(1.05);
+}
+
+.scroll-top-btn:active {
+  transform: scale(0.8);
+}
+
+.scroll-top-btn > * {
+  font-size: 20px;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+}
+
+/*Link to MAL*/
+.link-to-mal {
+  width: 90%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  margin-top: 3vh !important;
+  padding: 14px 18px; 
+  border-radius: 25px; 
+  background: linear-gradient(-45deg, #22a102, #01966a);
+  border: 1px solid rgba(46, 46, 46, 0.5); 
+  box-shadow: 0 4px 15px rgba(30, 30, 30, 0.5); 
+  transition: all 0.5s ease;
+}
+
+.link-to-mal:hover {
+  background: linear-gradient(135deg, #167000, #008059);
+  border: 1px solid rgba(255, 255, 255, 0.5); 
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+  transform: scale(1.01); 
+}
+
+.right-arrow-mal {
+  transition: padding-left 0.3s ease, transform 0.3s ease; 
+}
+
+.link-to-mal:hover .right-arrow-mal {
+  padding-left: 12px;
+  transform: translateX(5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scroll-top-btn > * {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 300px) {
@@ -529,6 +655,7 @@ p {
     height: 220px;
     align-items: center;
   }
+
   .nav-buttons > button {
     flex: 1;
   }
@@ -538,7 +665,7 @@ p {
   .anime-item {
     display: block;
   }
-  
+
   .contact-text {
     font-size: 16px;
     font-weight: 600;
@@ -587,6 +714,10 @@ p {
 
   .anime-info > h3 {
     text-indent: 0px;
+  }
+
+  .link-to-mal {
+    margin-top: 5vh !important;
   }
 
   .genre > div {
@@ -645,74 +776,5 @@ p {
   }
   .anime-view > h1 {
     font-size: 24px;
-  }
-}
-
-
-/*Scrolling behaivour*/
-/* Global styling for the scroll-to-top button */
-.scroll-top-btn {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  height: 30px;
-  width: 20px;
-  background-color: rgba(4, 164, 65, 0.4);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-  opacity: 0; /* Initially hidden */
-}
-
-/*Link to MAL*/
-.link-to-mal{
-  text-decoration: none;
-  margin-top: 15px;
-  color: rgb(50, 160, 38);
-  font-size: 14px;
-  transition: 0.5s;
-}
-
-.right-arrow-mal{
-  transition: 0.3s;
-} 
-
-.link-to-mal:hover, .link-to-mal:hover .right-arrow-mal{
-  color:rgb(69, 185, 94)
-}
-
-.link-to-mal:hover .right-arrow-mal{
-  padding-left: 10px;
-}
-
-.scroll-top-btn:hover{
-  background-color: rgba(4, 164, 65, 0.8);
-  box-shadow: 0 0 10px rgb(78, 230, 210);
-  transform: scale(1.05);
-  transition: 0.5s;
-}
-
-.scroll-top-btn:active{
-  transform: scale(0.8);
-}
-
-.scroll-top-btn > *{
-  font-size: 20px;
-}
-
-/* Make the button visible when scroll position is greater than 1000px */
-.scroll-top-btn.visible {
-  opacity: 1;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .scroll-top-btn > *{
-    font-size: 18px;
   }
 }

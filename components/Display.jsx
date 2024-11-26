@@ -3,7 +3,7 @@ import { FaArrowUp } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 
 const Display = ({ animeData }) => {
-  console.log(animeData);
+  // console.log(animeData);
 
   const [showScrollButton, setShowScrollButton] = useState(false);
 
@@ -212,15 +212,19 @@ const Display = ({ animeData }) => {
               {anime.synopsis && (
                 <div className="description">
                   <h3 className="h3">Description: </h3>
-                  <p className="description-text p">{anime.synopsis}</p>
+                  <p className="description-text p">
+                    {anime.synopsis.includes("[Written by MAL Rewrite]")
+                      ? anime.synopsis
+                          .split("[Written by MAL Rewrite]")[0]
+                          .trim()
+                      : anime.synopsis}
+                  </p>
                 </div>
               )}
               {anime.url && (
-                <h3 className="h3">
-                  <a href={anime.url} className="link-to-mal" target="_blank">
-                    MAL <FaArrowRight className="right-arrow-mal" />
-                  </a>
-                </h3>
+                <a href={anime.url} className="h3 link-to-mal" target="_blank">
+                  MAL <FaArrowRight className="right-arrow-mal" />
+                </a>
               )}
             </div>
           </div>
